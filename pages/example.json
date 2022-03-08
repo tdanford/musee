@@ -1,0 +1,31 @@
+{
+    "steps": [
+        {
+            "instruction": "I'm experimenting with trying to recreate a form of the Musee des Beaux Arts interface from the NYTimes", 
+            "content": {
+                "type": "empty"
+            }
+        },
+        {
+            "instruction": "You can put images, on the right, that correspond with snippets of text on the left", 
+            "content": {
+                "type": "image", 
+                "src": "code.png"
+            }
+        },
+        {
+            "instruction": "I want to add not just image transitions, but also zoom in and out on an existing image", 
+            "content": {
+                "type": "image", 
+                "src": "google.png"
+            }
+        },
+        {
+            "instruction": "I'm also trying to experiment with supporting other types of content in the pane on the right", 
+            "content": {
+                "type": "string", 
+                "value": "We can also just write some instructions or content here"
+            }
+        }
+    ]
+}

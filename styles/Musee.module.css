@@ -1,0 +1,61 @@
+
+.scrollingControl {
+    width: 30%; 
+    height: 100vh; 
+    display: inline-block;
+
+    overflow-x: hidden; 
+    overflow-y: scroll; 
+
+    background-color: darkslategray;
+    scrollbar-width: none; 
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.scrollingControl::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    height: 100%; 
+    width: 65%; 
+    display: inline-block; 
+    padding: 2vmax; 
+
+    overflow-x: hidden; 
+    overflow-y: hidden;  /* change this if we move to a scrollTo method */
+    scrollbar-width: none;
+
+    scroll-behavior: smooth;
+}
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.contentUnit {
+    height: 100%;
+}
+
+.contentUnit img {
+    max-height: 100%; 
+    max-width: 100%; 
+}
+
+.scrollUnit {
+    height: 100vh; 
+    text-align: left; 
+    font-size: large; 
+    color: white; 
+}
+
+.scrollContent {
+    height: 100%; 
+    padding-top: 45vh; 
+    padding-left: 1vw; 
+    padding-right: 1vw; 
+}
+
+.docContainer {
+    height: 100%;
+}
