@@ -11,7 +11,7 @@ type MuseeStepType = {
     content: MuseeContentType
 }
 
-type DocumentationType = {
+export type DocumentationType = {
     steps: MuseeStepType[]
 }
 
