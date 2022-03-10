@@ -1,5 +1,4 @@
-import { setDefaultResultOrder } from "dns";
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import MuseeContent, { MuseeContentType } from "../components/MuseeContent";
 import MuseeStep from "../components/MuseeStep";
 
