@@ -29,11 +29,9 @@ $ npm run dev
 
 After that, your server should be running on [http://localhost:3000/](http://localhost:3000/) (or perhaps on a different port, if there was something already running on port 3000 on your machine).  
 
-## Configuring a Presentation
+## Configuring a Museé
 
-At the moment, you can see an example configuration in the `example.json` file, located under the `pages` folder.  Currently, this JSON document is loaded statically when NextJS compiles the page the first time; this means that if you change the file while the dev server is running, you'll have to restart the dev server to see the updates.
-
-(In the future, we'll load these configuration files dynamically rather than compiling them statically like this; see _Future Work_ below.)
+At the moment, you can see an example configuration in `public/arts/example.json`. 
 
 Each JSON configuration file has a key, `steps`, whose value is an array of Musee Step objects.
 
@@ -45,7 +43,7 @@ Each JSON configuration file has a key, `steps`, whose value is an array of Muse
 }
 ```
 
-A Musee Step object has two keys, `instruction` and `content`.  
+An Art has two keys, `instruction` and `content`.  
 
 ```json
 {
@@ -65,6 +63,8 @@ The value of an `instruction` is just a string, but there are four types of `con
 
 They are classified by a common `type` field, with values in the set `{ "empty", "string", "image", "zoom" }`, and the type of content determines what is shown on the righthand side of the page when the corresponding instruction is visible on the left.  
 
+### Empty Arts
+
 For example, 
 
 ```json
@@ -73,7 +73,18 @@ For example,
 }
 ```
 
-Just shows a blank page on the right, while 
+Just shows a blank page on the right
+
+### String Arts 
+
+```json
+{
+  "type": "string", 
+  "value": "This string is rendered in the content pane without additional parsing"
+}
+```
+
+### Image Arts 
 
 ```json
 {
@@ -84,9 +95,21 @@ Just shows a blank page on the right, while
 
 will insert an HTML image element with a `src` URL of `/images/example.png`, which is served from the `public/images` folder in this project.  (Support for remote images will be added later.)
 
+### Zoomed Image Arts
+
+```json
+{
+  "type": "zoom", 
+  "src": "example.png", 
+  "tx": 10, 
+  "ty": 20, 
+  "scale": 2.0
+}
+```
+
 ## Future Work
 
 * Integrate with embedded reveal.js?
+* Integrate with [Manim](https://github.com/ManimCommunity/manim) for generating images programmatically rather than having to juggle screenshots everywhere
 * replace the all-or-nothing rendering on the righthand side of the page, with a `.scrollInToView()` type call, on a (very tall) div of images or content
-* load json configuration from an API rather than statically compiling it in
 * add other 'content types' e.g. raw html 
