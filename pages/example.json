@@ -1,9 +1,10 @@
 {
     "steps": [
         {
-            "instruction": "I'm experimenting with trying to recreate a form of the Musee des Beaux Arts interface from the NYTimes", 
+            "instruction": "I'm experimenting with trying to recreate a form of the Musee des Beaux Arts interface from the NYTimes.  Each presentation is configured using a JSON document, like the one shown to the right", 
             "content": {
-                "type": "empty"
+                "type": "image",
+                "src": "json.png"
             }
         },
         {
@@ -14,7 +15,17 @@
             }
         },
         {
-            "instruction": "I want to add not just image transitions, but also zoom in and out on an existing image", 
+            "instruction": "You can also zoom in, on an image already displayed", 
+            "content": {
+                "type": "zoom", 
+                "src": "code.png", 
+                "tx": 10, 
+                "ty": 10, 
+                "scale": 2
+            }
+        },
+        {
+            "instruction": "Right now, the transitions between images are flipping rather than scrolling-type transitions, but I'm going to try and fix that", 
             "content": {
                 "type": "image", 
                 "src": "google.png"
