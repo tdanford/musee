@@ -31,13 +31,13 @@ After that, your server should be running on [http://localhost:3000/](http://loc
 
 ## Configuring a Museé
 
-At the moment, you can see an example configuration in `public/arts/example.json`. 
+You can see an example configuration in `public/arts/example.json`. 
 
-Each JSON configuration file has a key, `steps`, whose value is an array of Musee Step objects.
+Each JSON configuration has field, `arts`, whose value is an array of Art objects.
 
 ```json
 {
-    "steps": [
+    "arts": [
         ...
     ]
 }

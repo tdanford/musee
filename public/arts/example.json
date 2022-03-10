@@ -1,5 +1,5 @@
 {
-    "steps": [
+    "arts": [
         {
             "instruction": "This is an experiment to try to recreate a form of the Musee des Beaux Arts interface from the NYTimes.  Each presentation is configured using a JSON document, like the one shown to the right", 
             "content": {

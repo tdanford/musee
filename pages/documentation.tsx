@@ -11,7 +11,7 @@ type MuseeStepType = {
 }
 
 export type DocumentationType = {
-    steps: MuseeStepType[]
+    arts: MuseeStepType[]
 }
 
 function Error({ reason }: { reason: any}) {
@@ -22,7 +22,7 @@ function Error({ reason }: { reason: any}) {
 
 function Musee() {
     const [currentStep, setCurrentStep] = useState(0); 
-    const [art, setArt] = useState<DocumentationType>({ steps: [] })
+    const [art, setArt] = useState<DocumentationType>({ arts: [] })
     const [error, setError] = useState<any>(null);
 
     useEffect(() => {
@@ -47,11 +47,11 @@ function Musee() {
         }
     }
 
-    const steps = art.steps
-        .map((step, i) => {
+    const steps = art.arts
+        .map((art, i) => {
             const key = `step_${i}`;
             return <MuseeStep key={key} visibilityChanged={visibilityCallback(i)}>
-                {step.instruction}
+                {art.instruction}
             </MuseeStep>
         });
     
@@ -66,8 +66,8 @@ function Musee() {
         </div>
         <div className={styles.content}>
             {
-                art.steps.length > 0 && 
-                <MuseeContent index={currentStep} content={art.steps[currentStep].content} />
+                art.arts.length > 0 && 
+                <MuseeContent index={currentStep} content={art.arts[currentStep].content} />
             }
         </div>
     </div>
