@@ -29,9 +29,64 @@ $ npm run dev
 
 After that, your server should be running on [http://localhost:3000/](http://localhost:3000/) (or perhaps on a different port, if there was something already running on port 3000 on your machine).  
 
+## Configuring a Presentation
+
+At the moment, you can see an example configuration in the `example.json` file, located under the `pages` folder.  Currently, this JSON document is loaded statically when NextJS compiles the page the first time; this means that if you change the file while the dev server is running, you'll have to restart the dev server to see the updates.
+
+(In the future, we'll load these configuration files dynamically rather than compiling them statically like this; see _Future Work_ below.)
+
+Each JSON configuration file has a key, `steps`, whose value is an array of Musee Step objects.
+
+```json
+{
+    "steps": [
+        ...
+    ]
+}
+```
+
+A Musee Step object has two keys, `instruction` and `content`.  
+
+```json
+{
+    "instruction": "Here is some string instruction, that is shown on the left-hand (scrollable) portion of the display", 
+    "content": {
+        ...
+    }
+}
+```
+
+The value of an `instruction` is just a string, but there are four types of `content` objects:
+
+* Empty
+* String
+* Image
+* Zoomed Image 
+
+They are classified by a common `type` field, with values in the set `{ "empty", "string", "image", "zoom" }`, and the type of content determines what is shown on the righthand side of the page when the corresponding instruction is visible on the left.  
+
+For example, 
+
+```json
+{
+    "type": "empty"
+}
+```
+
+Just shows a blank page on the right, while 
+
+```json
+{
+    "type": "image", 
+    "src": "example.png"
+}
+```
+
+will insert an HTML image element with a `src` URL of `/images/example.png`, which is served from the `public/images` folder in this project.  (Support for remote images will be added later.)
+
 ## Future Work
 
 * Integrate with embedded reveal.js?
-* Work on being able to animate / zoom images as a transition, instead of showing images
 * replace the all-or-nothing rendering on the righthand side of the page, with a `.scrollInToView()` type call, on a (very tall) div of images or content
+* load json configuration from an API rather than statically compiling it in
 * add other 'content types' e.g. raw html 

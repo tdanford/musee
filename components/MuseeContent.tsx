@@ -12,6 +12,14 @@ export type MuseeImageContentType = {
     src: string
 }
 
+export type MuseeZoomContentType = {
+    type: "zoom", 
+    tx: number, 
+    ty: number, 
+    scale: number,
+    src: string
+}
+
 export type MuseeStringContentType = { 
     type: "string", 
     value: string, 
@@ -21,7 +29,7 @@ export type MuseeEmptyContentType = {
     type: "empty", 
 }
 
-export type MuseeContentType = MuseeImageContentType | MuseeStringContentType | MuseeEmptyContentType ; 
+export type MuseeContentType = MuseeImageContentType | MuseeStringContentType | MuseeEmptyContentType | MuseeZoomContentType ; 
 
 export type MuseeContentProps = {
     content: MuseeContentType,
@@ -36,6 +44,13 @@ function MuseeContent({ content, index }: MuseeContentProps) {
         break;
         case "string": 
         contentElmt = <div>{content.value}</div>
+        break;
+        case "zoom": 
+        let transformStyle = {
+            transition: "transform 1s", 
+            transform: `translate(${content.tx}px, ${content.ty}px) scale(${content.scale})`
+        }
+        contentElmt = <img style={transformStyle} src={`/images/${content.src}`} />
         break;
         case "empty": 
         contentElmt = <div></div>
